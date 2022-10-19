@@ -10,6 +10,10 @@ helm:
 create-ns-dependencies:
 	@kubectl create ns iot-dependencies
 
+vault:
+	@helm repo add hashicorp https://helm.releases.hashicorp.com
+	@helm install vault hashicorp/vault --namespace iot-dependencies
+
 create-ns-storage:
 	@kubectl create ns iot-storages
 
