@@ -1,0 +1,51 @@
+BUILDPATH=$(CURDIR)
+API_NAME=cluster
+# external services required to run the service
+create: 
+	@k3d cluster create IoT --api-port 6550 -p "8081:80@loadbalancer" --agents 2 --kubeconfig-switch-context
+
+helm:
+	@arch -x86_64 brew install helm
+
+create-ns-dependencies:
+	@kubectl create ns iot-dependencies
+
+vault:
+	@helm repo add hashicorp https://helm.releases.hashicorp.com
+	@helm install vault hashicorp/vault --namespace iot-dependencies
+
+create-ns-storage:
+	@kubectl create ns iot-storages
+
+create-ns-services:
+	@kubectl create ns iot-services
+
+create-ns-cert-manager:
+	@kubectl create ns cert-manager
+
+create-ns-ingress-apisix:
+	@kubectl create ns ingress-apisix
+
+create-ns-ingress-nginx:
+	@kubectl create ns ingress-nginx
+
+create-ns-aduana-system:
+	@kubectl create ns aduana-system
+
+create-ns-kuberhealthy:
+	@kubectl create ns kuberhealthy
+
+create-ns-metrics-server:
+	@kubectl create ns metrics-server
+  
+coverage:
+	@echo "Coverfile... required 60% coverage"
+	@go test ./... --coverprofile coverfile_out >> /dev/null
+	@go tool cover -func coverfile_out
+	@go tool cover -func coverfile_out | grep total | awk '{print substr($$3, 1, length($$3)-1)}' > coverage.txt
+
+test:
+	@echo "Running tests..."
+	@go test -v --coverprofile=coverage.out ./... ./...
+ 
+.PHONY: test
