@@ -1,3 +1,3 @@
-module github.com/cuemby/github-actions-example
+module github.com/iot/github-actions-example
 
 go 1.17
