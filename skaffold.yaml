@@ -2,7 +2,7 @@ apiVersion: skaffold/v2beta10
 kind: Config
 build:
   artifacts:
-    - image: harbor.ccpadmin.cuemby.io/ccp-development/ccp-service-name
+    - image: harbor.iotadmin.iot.io/iot-development/iot-service-name
       docker:
         dockerfile: Dockerfile
         buildArgs:

@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: service-name-deployment
-  namespace: ccp-services
+  namespace: iot-services
 spec:
   selector: { }
   template:
     spec:
       containers:
         - name: service-name
-          image: ccp-image
+          image: iot-image
           imagePullPolicy: IfNotPresent
           ports:
             - protocol: TCP

@@ -8,7 +8,7 @@ resources:
 commonLabels:
   type: service
   interface: http
-  project: ccp
+  project: iot
 
 configMapGenerator:
   - name: configmap-envs
