@@ -14,4 +14,4 @@ Instructions about how to run the service in local environment.
 
 ## Author
 
-Igor Ariza <igorariza@gmail.com.com>
+Igor Ariza <igorariza@gmail.com>
