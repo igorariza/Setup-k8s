@@ -1,0 +1,7 @@
+spec:
+  members: 2 # Number of replica sets to create
+  security:
+    authentication:
+      modes:
+      - SCRAM
+  statefulSet:

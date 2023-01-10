@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: iot-event
+  namespace: iot-services
+
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: iot-event
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - 'namespaces'
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: iot-event
+  # namespace: ccp-services
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: iot-event
+subjects:
+- kind: ServiceAccount
+  name: iot-event
+  namespace: iot-services
+- kind: ServiceAccount
+  name: default
+  namespace: iot-services
