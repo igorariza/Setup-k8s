@@ -14,8 +14,4 @@ Instructions about how to run the service in local environment.
 
 ## Author
 
-Name <email@cuemby.com>
-
-### Contributors
-
-- Name <email@cuemby.com>
+Igor Ariza <igorariza@gmail.com.com>

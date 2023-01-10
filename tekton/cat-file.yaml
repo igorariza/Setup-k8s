@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: cat-file
+spec:
+  params:
+    - name: file
+      type: string
+      description: >
+        Relative path.
+  workspaces:
+    - name: folder
+  steps:
+    - name: list
+      image: ubuntu
+      workingDir: $(workspaces.folder.path)
+      script: |
+        cat $(params.file)
