@@ -1,0 +1,35 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: topic-environment
+  labels:
+    strimzi.io/cluster: kafka-cluster
+spec:
+  topicName: topic-environment
+  partitions: 5
+  replicas: 2
+---
+
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: topic-iot
+  labels:
+    strimzi.io/cluster: kafka-cluster
+spec:
+  topicName: topic-iot
+  partitions: 5
+  replicas: 2
+
+---
+
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: topic-logs
+  labels:
+    strimzi.io/cluster: kafka-cluster
+spec:
+  topicName: topic-logs
+  partitions: 5
+  replicas: 2
